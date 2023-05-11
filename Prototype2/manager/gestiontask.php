@@ -1,5 +1,7 @@
 <?php 
-class Gestionprojet {  
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once(__ROOT__ . '/Entity/task.php');
+class GestionTasks {  
     private $db;
     function __construct() { 
         $DB_HOST='localhost';  
@@ -10,55 +12,57 @@ class Gestionprojet {
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }  
 
-    public function Insert($projet) {
-        $nom = $projet->getNom();
-        $description = $projet->getdescription();
-        $query = "INSERT INTO Projet(nom, description) VALUES (:nom, :description)";
+    public function Insert($task) {
+        $id = $task->getId();
+        $nom = $task->getNom();
+        $description = $task->getdescription();
+        $query = "INSERT INTO tache (nom, description,idtask) VALUES (:nom, :description,:idtask)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':nom', $nom);
+        $stmt->bindParam(':idtask', $id);
         $stmt->bindParam(':description', $description);
         $stmt->execute();
     }
-    public function Select() {
-        $sql = 'SELECT id, nom, description FROM Projet';
+    public function Select($id) {
+        $sql = 'SELECT id, nom, description FROM tache WHERE idprojet='.$id;
         $stmt = $this->db->prepare($sql);
         $stmt->execute();
-        $projet_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $tache_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        $projets = array();
-        foreach ($projet_data as $project_data) {
-            $project = new Projet();
+        $tasks = array();
+        foreach ($tache_data as $project_data) {
+            $project = new task();
             $project->setId($project_data['id']);
             $project->setNom($project_data['nom']);
             $project->setdescription($project_data['description']);
-            array_push($projets, $project);
+            array_push($tasks, $project);
         }
-        return $projets;
+        return $tasks;
     }
     public function Delete($id){
-        $sql = "DELETE FROM Projet WHERE Id= :id";
+        $sql = "DELETE FROM tache WHERE id= :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     
     }
     public function RechercherParId($id){
-        $query = $this->db->prepare("SELECT * FROM Projet WHERE Id = :id");
+        $query = $this->db->prepare("SELECT * FROM task WHERE id = :id");
         $query->bindParam(":id", $id, PDO::PARAM_INT);
         $query->execute();
-        $projet_data = $query->fetch(PDO::FETCH_ASSOC);
+        $task_data = $query->fetch(PDO::FETCH_ASSOC);
     
-        $projet = new Projet();
-        $projet->setId($projet_data['id']);
-        $projet->setNom($projet_data['nom']);
-        $projet->setdescription ($projet_data['description']);
+        $task = new task();
+        $task->setId($task_data['id']);
+        $task->setNom($task_data['nom']);
+        $task->setdescription ($task_data['description']);
     
-        return $projet;
+        return $task;
     }
     public function Modifier($id, $nom, $description)
 {
     // Requête SQL
-    $sql = "UPDATE Projet SET 
+    $sql = "UPDATE task SET 
         nom=:nom, description=:description
         WHERE id= :id";
 
@@ -78,29 +82,5 @@ class Gestionprojet {
 
 
 
-}
-class Projet{
-    private $Id;
-    private $Nom;
-    private $description;
-    public function getId() {
-        return $this->Id;
-    }
-    public function setId($id) {
-        $this->Id = $id;
-    }
-    public function getNom() {
-        return $this->Nom;
-    }
-    public function setNom($nom) {
-        $this->Nom = $nom;
-    }
-
-    public function getdescription() {
-        return $this->description;
-    }
-    public function setdescription($description) {
-        $this->description = $description;
-    }
 }
 ?>

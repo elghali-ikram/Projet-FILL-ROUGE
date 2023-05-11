@@ -1,7 +1,6 @@
 
 <?php
-
-include "gestionprojet.php";
+include "../manager/gestionprojet.php";
 $gestionprojet = new Gestionprojet();
 
 if(!empty($_POST)){

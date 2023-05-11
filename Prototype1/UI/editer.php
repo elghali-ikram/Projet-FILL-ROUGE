@@ -1,10 +1,10 @@
 <?php
 
-include "gestionprojet.php";
+include "../manager/gestionprojet.php";
 $gestionprojet = new Gestionprojet();
 $id = $_GET['id'];
 
-    $projet = $gestionprojet->RechercherParId($id);
+$projet = $gestionprojet->RechercherParId($id);
 
 if(isset($_POST['modifier'])){
     $nom = $_POST['Nom'];
@@ -19,7 +19,7 @@ if(isset($_POST['modifier'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="UI/style.css">
 	<title>Gestion des projet</title>
 </head>
 <body>
