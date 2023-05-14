@@ -10,13 +10,13 @@ class GestionTasks {
         $DB_DATABSE='prototype';   
         $this->db = new PDO("mysql:host={$DB_HOST};dbname={$DB_DATABSE}", $DB_USER, $DB_PASSWORD); 
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }  
+    }   
 
     public function Insert($task) {
         $id = $task->getId();
         $nom = $task->getNom();
         $description = $task->getdescription();
-        $query = "INSERT INTO tache (nom, description,idtask) VALUES (:nom, :description,:idtask)";
+        $query = "INSERT INTO tache (nom, description,idprojet) VALUES (:nom, :description,:idtask)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':nom', $nom);
         $stmt->bindParam(':idtask', $id);
@@ -30,12 +30,12 @@ class GestionTasks {
         $tache_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         $tasks = array();
-        foreach ($tache_data as $project_data) {
-            $project = new task();
-            $project->setId($project_data['id']);
-            $project->setNom($project_data['nom']);
-            $project->setdescription($project_data['description']);
-            array_push($tasks, $project);
+        foreach ($tache_data as $task_data) {
+            $task = new task();
+            $task->setId($task_data['id']);
+            $task->setNom($task_data['nom']);
+            $task->setdescription($task_data['description']);
+            array_push($tasks, $task);
         }
         return $tasks;
     }
@@ -77,6 +77,28 @@ class GestionTasks {
     // Exécution de la requête
     $stmt->execute();
 
+
+}
+public function search($name,$idprojet) {
+    $sql = 'SELECT id, nom, description FROM tache WHERE nom LIKE :name AND idprojet=:idprojet';
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(':name', '%' . $name . '%', PDO::PARAM_STR);
+    $stmt->bindValue(':idprojet', $idprojet, PDO::PARAM_STR);
+
+    $stmt->execute();
+    $tache_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $tasks = array();
+    foreach ($tache_data as $task_data) {
+        $task = new Task();
+        $task->setId($task_data['id']);
+        $task->setNom($task_data['nom']);
+        $task->setdescription($task_data['description']);
+        array_push($tasks, $task);
+    }
+    return $tasks;
+}
+public function selectWithPagination( $rows="*", $where=null, $perPage=1) {
 
 }
 
