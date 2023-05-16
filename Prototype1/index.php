@@ -1,10 +1,10 @@
 <?php
-    include "./manager/gestionprojet.php";
-    $gestionprojet = new Gestionprojet();
-    $projects = $gestionprojet->Select();
+    include "./manager/gestioncategory.php";
+    $gestioncategory = new Gestioncategory();
+    $categorys = $gestioncategory->Select();
     if(isset($_POST['id'])){
       $id = $_POST['id'] ;
-      $gestionprojet->Delete($id);
+      $gestioncategory->Delete($id);
       header('Location: index.php');
   }
 ?>
@@ -18,31 +18,29 @@
     <link rel="stylesheet" href="UI/style.css">
 </head>
 <body>
-    <h1>GESTION DES Projets</h1>
+    <h1>CATEGORY</h1>
     <div> 
-            <a href="UI/add.php">Ajouter projet</a>
+            <a href="UI/add.php">Ajouter category</a>
     </div>
     <table >
         <thead>
           <tr>
             <th >Nom</th>
-            <th >Description</th>
             <th >Action</th>
           </tr>
         </thead>
         <tbody>
         <?php
-              foreach($projects as $projet){
+              foreach($categorys as $category){
             ?>
             <tr>
-                <td><?= $projet->getNom() ?></td>
-                <td><?= $projet->getdescription() ?></td>
+                <td><?= $category->getName() ?></td>
                 <td>
                   <form action="" method="post">
-                    <input type="hidden" name="id" value="<?php echo $projet->getId() ?>">
+                    <input type="hidden" name="id" value="<?php echo $category->getId() ?>">
                     <button type="submit">Supprime</button>
                   </form>
-                    <a href="UI/editer.php?id=<?php echo $projet->getId() ?>">Éditer</a>
+                    <a href="UI/editer.php?id=<?php echo $category->getId() ?>">Éditer</a>
                 </td>
             </tr>
             <?php }?>

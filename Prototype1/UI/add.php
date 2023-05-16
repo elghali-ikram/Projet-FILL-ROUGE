@@ -1,15 +1,14 @@
 
 <?php
-include "../manager/gestionprojet.php";
-$gestionprojet = new Gestionprojet();
+include "../manager/gestioncategory.php";
+$gestioncategory = new  Gestioncategory ();
 
 if(!empty($_POST)){
-	$projet = new Projet();
-	$projet->setNom($_POST['Nom']);
-	$projet->setdescription($_POST['description']);
-	$gestionprojet->Insert($projet);
+	$category = new Category();
+	$category->setName($_POST['Nom']);
+	$gestioncategory->Insert($category);
 	// Redirection vers la page index.php
-	header("Location: index.php");
+	header("Location: ../index.php");
 }
 ?>
 <!DOCTYPE html>
@@ -30,11 +29,6 @@ if(!empty($_POST)){
 		<label for="Nom">Nom</label>
 		<input type="text" required="required" id="Nom" name="Nom" 
 		placeholder="Nom">
-	</div>
-	<div>
-		<label for="Prenom">Description</label>
-		<input type="text" required="required" id="description" name="description" 
-		placeholder="description">
 	</div>
 	<div>
 		<button type="submit">Ajouter</button>
