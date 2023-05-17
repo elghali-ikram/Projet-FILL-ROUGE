@@ -81,10 +81,13 @@ if (isset($_POST['Edit'])) {
         <th>Price</th>
         <th>Action</th>
       </tr>
+
       <?php
       foreach ($products as $product) {
+
       ?>
-        <tr>
+      <tbody id="result">
+      <tr>
           <td>
             <?= $product->getName() ?>
           </td>
@@ -131,6 +134,8 @@ if (isset($_POST['Edit'])) {
             </div>
           </td>
         </tr>
+      </tbody>
+
       <?php } ?>
     </table>
   </div>

@@ -49,19 +49,7 @@ class Gestionproduct {
         $stmt->execute();
     
     }
-//     public function RechercherParId($id){
-//         $query = $this->db->prepare("SELECT * FROM products WHERE id = :id");
-//         $query->bindParam(":id", $id, PDO::PARAM_INT);
-//         $query->execute();
-//         $product_data = $query->fetch(PDO::FETCH_ASSOC);
-    
-//         $product = new product();
-//         $product->setId($product_data['id']);
-//         $product->setNom($product_data['nom']);
-//         $product->setdescription ($product_data['description']);
-    
-//         return $product;
-//     }
+
     public function Modifier($id, $nom, $description,$price)
 {
     // Requête SQL
@@ -104,8 +92,44 @@ public function search($name,$idprojet) {
     }
     return $products;
 }
-public function selectWithPagination( $rows="*", $where=null, $perPage=1) {
+public function selectWithPagination(  $perPage=1, $id) {
+    $sql = 'SELECT Id_product, name_product, description,price FROM product WHERE Id_category='.$id;
 
+            $countQuery = "SELECT COUNT(*) as count FROM product WHERE Id_category='.$id.'";
+   
+            $countStmt = $this->db->prepare($countQuery);
+            $countStmt->execute();
+            $countResult = $countStmt->fetch(PDO::FETCH_ASSOC);
+            $totalCount = $countResult['count'];
+            $currentPage = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+            // Calculate the offset and limit for the current page
+            $offset = ($currentPage - 1) * $perPage;
+            $limit = $perPage;
+            $sql .= " LIMIT $limit OFFSET $offset";
+            $stmt = $this->db->prepare($sql);
+    $stmt->execute();
+    $products_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $products = array();
+    foreach ($products_data as $product_data) {
+        $product = new Product();
+        $product->setId($product_data['Id_product']);
+        $product->setName($product_data['name_product']);
+        $product->setdescription($product_data['description']);
+        $product->setprice($product_data['price']);
+        array_push($products, $product);
+    }
+
+        
+            // Calculate the total number of pages
+            $totalPages = ceil($totalCount / $perPage);
+        
+            return array(
+                'result' => $products,
+                'currentpage'=>$currentPage,
+                'totalCount' => $totalCount,
+                'totalPages' => $totalPages
+            );
 }
 
 
