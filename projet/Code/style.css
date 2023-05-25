@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap');
+
+
+
+
+
+nav , footer
+{
+    background-color: antiquewhite;
+}
+.circle
+{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.backimg
+{
+    background: url("imageattach.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+}
+.backcolor
+{
+    background-color: #cbbead95;
+}
+.sidebar
+{
+    margin-top:  150px;
+    left: 0;
+}
+.cards
+{
+    margin-top: 100px;
+}
+
+
+
+
+.btn.btn-flat{
+    font-family: 'Roboto Slab', serif;
+        font-size: 1.2rem;
+    font-weight: 500;
+    border-radius: 5px;
+	border: 3px solid #8D5409;
+	height: 50px;
+	background: transparent;
+	-webkit-transition: 0.9s;
+	transition: 0.9s;
+}
+
+.btn-flat.btn-color{
+	color: #040404;
+	background: linear-gradient(30deg, #8D5409 50%, transparent 50%);
+	background-position: right bottom;
+	background-size: 300% 100%;
+
+}
+
+.btn-flat.btn-color:hover{
+	background-position: left bottom;
+	border: 3px solid #8D5409;
+	color: #fffafa;
+}
+
