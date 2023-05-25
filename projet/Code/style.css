@@ -17,11 +17,12 @@ nav , footer
 
 .backimg
 {
-    background: url("imageattach.png");
+    background: url("images/imageattach.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
 }
+
 .backcolor
 {
     background-color: #cbbead95;
@@ -41,7 +42,7 @@ nav , footer
 
 .btn.btn-flat{
     font-family: 'Roboto Slab', serif;
-        font-size: 1.2rem;
+    font-size: 1.2rem;
     font-weight: 500;
     border-radius: 5px;
 	border: 3px solid #8D5409;
@@ -63,5 +64,13 @@ nav , footer
 	background-position: left bottom;
 	border: 3px solid #8D5409;
 	color: #fffafa;
+}
+.box
+{
+    top: 25% ;
+}
+.btncolor{
+	color: #fffafa !important;
+    background-color: #8D5409 !important;
 }
 

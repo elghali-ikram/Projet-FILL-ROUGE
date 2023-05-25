@@ -2,10 +2,9 @@
     include "./manager/gestioncategory.php";
     $gestioncategory = new Gestioncategory();
     $categorys = $gestioncategory->Select();
-    if(isset($_POST['id'])){
+    if($_POST['supprime']){
       $id = $_POST['id'] ;
       $gestioncategory->Delete($id);
-      header('Location: index.php');
   }
 ?>
 <!DOCTYPE html>
@@ -38,7 +37,7 @@
                 <td>
                   <form action="" method="post">
                     <input type="hidden" name="id" value="<?php echo $category->getId() ?>">
-                    <button type="submit">Supprime</button>
+                    <input type="submit" value="Supprime" name="supprime">
                   </form>
                     <a href="UI/editer.php?id=<?php echo $category->getId() ?>">Éditer</a>
                 </td>

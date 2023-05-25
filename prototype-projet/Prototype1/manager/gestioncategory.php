@@ -35,7 +35,7 @@ class Gestioncategory {
         return $categorys;
     }
     public function Delete($id){
-        $sql = "DELETE FROM category WHERE Id_category= :id";
+        $sql = "DELETE FROM category WHERE Id_category == :id";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
