@@ -1,73 +1,109 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-    crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/0f55910cdd.js" crossorigin="anonymous"></script>
-  <script src="style.js" defer></script>
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-skyblue.min.css"
-  />
-  <script
-    type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"
-  ></script>
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/css/themes/splide-skyblue.min.css"
+/>
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.1/dist/js/splide.min.js"
+></script>
+  <style>
+#splide1 {
+  padding: 20px 0;
+}
+#splide1 .splide__slide img{
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 400ms;
+    transform: scale(.9);
+    transform-origin: center center;
+}
+#splide1 .splide__slide.is-active img {
+    transform: scale(1);
+}
+#splide1 .splide__arrow {
+  top: 30%;
+  bottom: 0;
+  height: 100%;
+  border-radius: unset;
+  width: 50px;
+  opacity: .9;
+  color: black;
+
+}
+/* .splide__arrow.splide__arrow--prev {
+  left: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%);
+}
+.splide__arrow.splide__arrow--next {
+  right: 0;
+  background: linear-gradient(270deg, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 100%);
+} */
+body {
+  margin: 0;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  font-family: Arial;
+}
+a {
+  color: #fff;
+  padding: 4px 8px;
+}
+.left {
+  text-align: left;
+}
+  </style>
 
 </head>
-
 <body>
-  <div class="container py-5">
-    <div class="splide" id="main-slider" aria-label="My Awesome Gallery">
-      <div class="splide__track">
-        <ul class="splide__list">
-          <li class="splide__slide">
-            <img src="https://source.unsplash.com/random/1000x1000?sig=1" alt="" class="img-fluid">
-          </li>
-          <li class="splide__slide">
-            <img src="https://source.unsplash.com/random/1000x1000?sig=2" alt="" class="img-fluid">
-          </li>
-          <li class="splide__slide">
-            <img src="https://source.unsplash.com/random/1000x1000?sig=3" alt="" class="img-fluid">
-          </li>
-          <li class="splide__slide">
-            <img src="https://source.unsplash.com/random/1000x1000?sig=4" alt="" class="img-fluid">
-          </li>
-        </ul>
-      </div>
+  <section>
+    <h1>Splide JS Carousel Demo</h1>
+    <p class="left">Splide is a lightweight, powerful and flexible slider/carousel, written in pure JavaScript without any dependencies. Hands down the best slider/carousel plugin you will find out there. Well written, well supported, no dependencies and perfectly documented with plenty of options. </p>
+    <p>
+      <a href="https://splidejs.com/">Splidejs.com</a>
+      <a href="https://github.com/Splidejs/splide">SplideJS GitHub</a>
+    </p>
+  </section>
+  
+  <div id="splide1" class="splide">
+    <div class="splide__track">
+      <ul class="splide__list">
+        <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-10.jpg"></li>
+        <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-5.jpg"></li>
+        <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-4.jpg"></li>
+        <li class="splide__slide"><img src="https://brandontran.com/images/cardboard-castle-3.jpg"></li>
+      </ul>
     </div>
-
-    <ul class="thumbnails mt-3">
-      <li class="thumbnail">
-        <img src="https://source.unsplash.com/random/1000x1000?sig=1" alt="" class="img-fluid">
-      </li>
-      <li class="thumbnail">
-        <img src="https://source.unsplash.com/random/1000x1000?sig=2" alt="" class="img-fluid">
-      </li>
-      <li class="thumbnail">
-        <img src="https://source.unsplash.com/random/1000x1000?sig=3" alt="" class="img-fluid">
-      </li>
-      <li class="thumbnail">
-        <img src="https://source.unsplash.com/random/1000x1000?sig=4" alt="" class="img-fluid">
-      </li>
-    </ul>
   </div>
-
+  
+  
   <script>
-    // JavaScript code for Splide slider initialization
-
-
+    document.addEventListener( 'DOMContentLoaded', function () {
+  new Splide('#splide1', {
+    type: 'loop',
+    perPage: 3,
+    focus: 'center',
+    autoplay: true,
+    interval: 8000,
+    flickMaxPages: 3,
+    pagination: false,
+    padding: '10%',
+    throttle: 300,
+    breakpoints: {
+      1440: {
+        perPage: 1,
+        padding: '30%'
+      }
+    }
+  }).mount();
+});
   </script>
 </body>
-
 </html>

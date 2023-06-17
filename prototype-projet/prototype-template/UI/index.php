@@ -38,6 +38,7 @@ if (!empty($_POST['Edit'])) {
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
+    
   </div>
   <!-- /.content-header -->
   <!-- Main content -->
@@ -70,7 +71,7 @@ if (!empty($_POST['Edit'])) {
                 <!-- /.modal-dialog -->
               </div>
               <!-- /.modal -->
-              <div class="card-tools">
+              <div class="card-tools" data-aos="zoom-in-right" data-aos-duration="2000">
                 <div class="input-group input-group-sm" style="width: 150px;">
                   <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
                   <div class="input-group-append">
@@ -82,7 +83,7 @@ if (!empty($_POST['Edit'])) {
               </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body table-responsive p-0">
+            <div class="card-body table-responsive p-0" >
               <table class="table table-hover text-nowrap">
                 <thead>
                   <tr>
@@ -99,13 +100,19 @@ if (!empty($_POST['Edit'])) {
                         <?= $category->getName() ?>
                       </td>
                       <td>
-                        <div class="d-flex gap-2 justify-content-center">
+                        <div class="row justify-content-center">
+                          <div class="col-md-2">
                           <form action="" method="post">
                             <input type="hidden" name="id" value="<?php echo $category->getId() ?>">
                             <input type="submit" value="Supprimer" name="delete" class="btn btn-outline-danger">
                           </form>
+                          </div>
+                          <div class="col-md-2">
                           <button  class="btn btn-outline-secondary"  data-toggle="modal" data-target="#modalaedit<?php echo $category->getId() ?>">Éditer</button>
+                          </div>
+                          <div class="col-md-2">
                           <a href="product.php?id=<?php echo $category->getId() ?>" class="btn btn-outline-success">Ajouter product</a>
+                          </div>
                         </div>
                       </td>
                     </tr>

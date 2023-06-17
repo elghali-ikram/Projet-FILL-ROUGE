@@ -11,8 +11,7 @@ class Gestioncategory {
         $this->db = new PDO("mysql:host={$DB_HOST};dbname={$DB_DATABSE}", $DB_USER, $DB_PASSWORD); 
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }  
-
-    public function Insert($category) {
+    public function Insert($category){
         $name = $category->getName();
         $query = "INSERT INTO category(name) VALUES (:name)";
         $stmt = $this->db->prepare($query);
@@ -69,11 +68,6 @@ class Gestioncategory {
 
     // Exécution de la requête
     $stmt->execute();
-
-
 }
-
-
-
 }
 ?>

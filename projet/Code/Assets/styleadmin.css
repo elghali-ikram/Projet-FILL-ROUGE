@@ -1,0 +1,83 @@
+ .main-sidebar ,.navbar, .navbar-nav, .btn
+{
+    background-color: #8D5409 !important;
+    color: #FFFFFF !important;
+}
+.login-page
+{
+  background: #8d54097e url("images/header.png");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+}
+.text-color:hover{
+    color:  rgb(244, 244, 244);
+}
+.nav-item p,.nav-item i,.text-color
+{
+    color: rgb(244, 244, 244);
+
+}
+.back ,.page-link
+{
+    background-color: #B49C7C !important;
+    color: white !important;
+}
+/* image add */
+.rectangle ,.rectangle_updat {
+    width: 150px;
+    height: 80px;
+    background-color: aliceblue;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+  }
+/* .image-input  {
+    position: absolute;
+    padding: 10px;
+    background: rgba(217,217,217,0.3700000047683716);
+    opacity: 1;
+    position: absolute;
+    top: 24px;
+    left: 53px;
+    border-radius: 50%;
+  } */
+.rectangle input[type="file"] ,.rectangle_updat input[type="file"]
+{
+    display: none;
+  }
+
+  .rectangle .icon ,.rectangle_updat .icon{
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+
+
+  .image {
+    position: relative;
+    width: 150px;
+    height: 80px;
+
+  }
+  .image img
+  {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .top-right {
+    position: absolute;
+    top: 0px !important;
+    right: 12px !important; 
+    left: 116px;
+    color: black !important;
+  }
+
