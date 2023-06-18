@@ -82,7 +82,7 @@ $(function () {
   $(function () {
     $.validator.setDefaults({
       submitHandler: function () {
-        alert( "Form successful submitted!" );
+        form.submit(); // Submit the form
       }
     });
     $('#quickForm').validate({

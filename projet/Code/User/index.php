@@ -32,23 +32,21 @@ $gestionimage = new Gestionimage();
   <div class="row justify-content-center mt-4">
     <div class="d-flex flex-wrap p-3 gap-3 justify-content-center">
       <div class="card col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in-right" data-aos-duration="2000">
-        <img src="../Assets/images/women1.png" class="card-img">
+        <img src="../Assets/images/women.png" class="card-img">
         <div class="card-img-overlay p-5 top-50">
           <h5 class="card-title text-light mb-3">Pyjamas Women</h5>
-          <a href="articls.php?category=Women" class="btn btn-block btncolor w-50">Show</a>
+          <a href="articls.php?category=2" class="btn btn-block btncolor w-50">Show</a>
         </div>
       </div>
       <div class="card col-sm-12 col-md-6 col-lg-4" data-aos="zoom-in-left" data-aos-duration="2000">
         <img src="../Assets/images/men1.png" class="card-img">
         <div class="card-img-overlay p-5 top-50">
           <h5 class="card-title text-light mb-3">Pyjamas Men</h5>
-          <a href="articls.php?category=Men" class="btn btn-block btncolor w-50">Show</a>
+          <a href="articls.php?category=1" class="btn btn-block btncolor w-50">Show</a>
         </div>
       </div>
     </div>
   </div>
-
-
     <div class=" row justify-content-center ">
       <h2 class="text-center p-4">NEW PRODUCT</h2>
       <hr class="opacity-100">
@@ -106,8 +104,8 @@ $gestionimage = new Gestionimage();
     </div>
     <div class="backimg p-5  row justify-content-center">
       <div class="overlay-text   p-2 text-center  text-white">
-        <h1>WONDER DEVELOP</h1>
-        <h2>tsdfgjhkjlklfjgvhjb</h2>
+        <h1>You tell us. We listen.</h1>
+        <h2>ras elementum finibus lacus nec lacinia. Quisque non convallis nisl</h2>
         <a href="contactus.php" class="btn  btncolor ">Contact us</a>
       </div>
     </div>

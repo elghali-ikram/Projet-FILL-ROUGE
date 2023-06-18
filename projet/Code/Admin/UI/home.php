@@ -1,4 +1,10 @@
 <?php 
+session_start();
+if (empty($_SESSION["email"])) {
+    // User session is not empty, redirect to home.php
+    header("Location: page404.php");
+    exit();
+}
  include '../Includes/head.php'
  ?>
 
@@ -17,6 +23,7 @@
         </div>
       </section>
     </div>
+    
  <?php 
  include '../Includes/footer.php'
  ?>

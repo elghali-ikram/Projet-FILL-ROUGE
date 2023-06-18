@@ -1,6 +1,4 @@
-<footer class="main-footer">
-  <strong>Copyright &copy; 2023 <a href="">Florian Atelier</a>.</strong>All rights reserved.
-</footer>
+
 
 </div>
 

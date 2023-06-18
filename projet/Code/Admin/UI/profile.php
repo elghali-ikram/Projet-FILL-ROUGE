@@ -1,4 +1,10 @@
 <?php 
+session_start();
+if (empty($_SESSION["email"])) {
+    // User session is not empty, redirect to home.php
+    header("Location: page404.php");
+    exit();
+}
  include '../Includes/head.php'
  ?>
 
@@ -19,8 +25,8 @@
 
             <div class="card  card-outline">
               <div class="card-body box-profile">
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
-                <p class="text-muted text-center">Software Engineer</p>
+                <h3 class="profile-username text-center"><?= $_SESSION["name"]?></h3>
+                <p class="text-muted text-center"><?= $_SESSION["email"]?></p>
               </div>
             </div>
           </div>
@@ -31,7 +37,7 @@
               </div>
               <div class="card-body">
                   <div >
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="../Controller/admin.php">
                       <div class="form-group row">
                         <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
@@ -52,7 +58,7 @@
                       </div>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                            <input type="submit" value="Edit profile" class="btn " name="profile">
+                            <input type="submit" value="Edit profile" class="btn" name="profile">
                         </div>
                       </div>
                     </form>

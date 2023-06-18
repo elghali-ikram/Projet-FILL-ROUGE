@@ -1,7 +1,6 @@
 <?php
 session_start();
-
-if (!empty($_SESSION['user_id'])) {
+if (!empty($_SESSION["email"])) {
     // User session is not empty, redirect to home.php
     header("Location: UI/home.php");
     exit();

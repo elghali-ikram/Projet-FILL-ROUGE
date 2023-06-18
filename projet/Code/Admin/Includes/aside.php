@@ -17,9 +17,9 @@
               <i class="far fa-user"></i> Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-cogs"></i>
-              Settings
+            <a href="../Controller/logout.php" class="dropdown-item">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
             </a>
           </div>
         </li>

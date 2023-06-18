@@ -1,6 +1,12 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+session_start();
+if (empty($_SESSION["email"])) {
+    // User session is not empty, redirect to home.php
+    header("Location: page404.php");
+    exit();
+}
 include '../Includes/head.php';
 include '../Includes/root.php';
 include "../manager/gestionproduct.php";
@@ -16,8 +22,14 @@ include "../manager/gestionassociation.php";
 $gestionassociation = new Gestionassociation();
 include "../manager/gestionimage.php";
 $gestionimage = new Gestionimage();
+if (isset($_POST['submit'])) {
+  if(!empty($_POST["search"]))
+  {
+    $search=$_POST["search"];
+    $result = $gestionproduct->selectWithPagination('nom_product',$search, 5);
+  }
+} 
 ?>
-
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
     <?php
@@ -37,14 +49,16 @@ $gestionimage = new Gestionimage();
                 <div class="card-header back">
                   <h3 class="card-title"> All Products</h3>
                   <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 150px;">
-                      <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                  <form action="" method="post">
+                     <div class="input-group input-group-sm" style="width: 150px;">
+                     <input type="text" name="search" class="form-control float-right" placeholder="Search">
                       <div class="input-group-append">
-                        <button type="submit" class="btn btn-default">
+                        <button type="submit" name="submit" class="btn btn-default">
                           <i class="fas fa-search"></i>
                         </button>
                       </div>
-                    </div>
+                      </div>
+                     </form>
                   </div>
                 </div>
                 <div class="card-body table-responsive p-0" style="height: 300px;">
@@ -229,6 +243,7 @@ $gestionimage = new Gestionimage();
         </div>
       </section>
     </div>
+    
     <?php
     include '../Includes/footer.php'
     ?>

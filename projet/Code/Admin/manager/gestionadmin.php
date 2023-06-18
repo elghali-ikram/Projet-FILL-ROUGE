@@ -12,11 +12,43 @@ class Gestionadmin {
     }  
     public function Insert($admin){
         $name = $admin->getName();
-        $query = "INSERT INTO categories(`name_admin`) VALUES (:name)";
+        $email=$admin->getEmail();
+        $password=$admin->getPassword();
+        $pass=password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO Admin( `name`, `email`, `password`) VALUES (:name,:email,:password)";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':password', $pass);
         $stmt->execute();
     }
+    public function signin($email, $password)
+    {
+        session_start();
+        try {
+            $sql = "SELECT * FROM `Admin` WHERE `email`= ?";
+            $query = $this->db->prepare( $sql );
+            $query->execute( array($email));
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            if($results)
+            {
+                if(password_verify($password,$results[0]["password"]))
+                {
+                    $_SESSION["email"]=$results[0]["email"];
+                    $_SESSION["id"]=$results[0]["id_admin"];
+                    $_SESSION["name"]=$results[0]["name"];
+
+
+                    return true;
+                }
+            }
+            else{
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo "There is some problem in connection: " . $e->getMessage();
+        }
+    } 
     public function Select($where) {
         $sql = 'SELECT id_admin, name_admin FROM categories';
         if ($where != null) {
@@ -40,13 +72,16 @@ class Gestionadmin {
         $stmt->bindParam(':id', $id);
         $stmt->execute();
     }
-    public function Modifier($id, $name)
+    public function Modifier($id, $name,$email,$password)
     {
-    $sql = "UPDATE categories SET 
-        name_admin=:name
+        $pass=password_hash($password, PASSWORD_DEFAULT);
+    $sql = "UPDATE `Admin` SET 
+        `name`=:name,`email`=:email,`password`=:password
         WHERE id_admin= :id";
     $stmt = $this->db->prepare($sql);
     $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':password', $pass);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     }

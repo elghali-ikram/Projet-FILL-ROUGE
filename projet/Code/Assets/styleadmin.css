@@ -19,10 +19,11 @@
     color: rgb(244, 244, 244);
 
 }
-.back ,.page-link
+.back ,.page-link, .preloader
 {
     background-color: #B49C7C !important;
     color: white !important;
+    border-color:  #070707 !important;
 }
 /* image add */
 .rectangle ,.rectangle_updat {

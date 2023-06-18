@@ -114,7 +114,9 @@ include '../Includes/root.php';
       </section>
     </div>
  
-
+<footer class="main-footer">
+  <strong>Copyright &copy; 2023 Florian Atelier.</strong>All rights reserved.
+</footer>
     <?php
     include '../Includes/footer.php'
     ?>

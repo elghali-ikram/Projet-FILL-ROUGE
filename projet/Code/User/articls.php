@@ -37,7 +37,7 @@ if(isset($_GET["category"]))
   include './includes/navbar.php'
   ?>
   <div class="d-flex flex-lg-row flex-md-row flex-column gap-2">
-    <div class="sidebar  w-auto  p-4 bg-light">
+    <div class="sidebar  w-auto  p-4 ">
       <form action="" method="post">
         <div class="input-group mb-3">
           <input type="text" class="form-control" name="search" placeholder="Search..." aria-label="Search" aria-describedby="search-btn">
@@ -110,17 +110,17 @@ if(isset($_GET["category"]))
         <ul class="pagination pagination-sm m-0 ">
           <?php
           if ($products['currentPage'] > 1) {
-            echo '<li class="page-item"><a class="page-link backcolor" href="?page=' . ($products['currentPage'] - 1) . '">&laquo;</a></li>';
+            echo '<li class="page-item"><a class="page-link" href="?page=' . ($products['currentPage'] - 1) . '">&laquo;</a></li>';
           }
           for ($i = 1; $i <= $products['totalPages']; $i++) :
             if ($i == $products['currentPage']) {
-              echo '<li class="page-item active"> <a  class="page-link backcolor" href="#">' . $i . '</a> </li>';
+              echo '<li class="page-item active"> <a  class="page-link " href="#">' . $i . '</a> </li>';
             } else {
-              echo '<li class="page-item "> <a  class="page-link backcolor" href="?page=' . $i . '">' . $i . '</a> </li>';
+              echo '<li class="page-item "> <a  class="page-link " href="?page=' . $i . '">' . $i . '</a> </li>';
             }
           endfor;
           if ($products['currentPage'] < $products['totalPages']) {
-            echo '<li class="page-item "> <a class="page-link backcolor" href="?page=' . ($products['currentPage'] + 1) . '">&raquo;</a> </li>';
+            echo '<li class="page-item "> <a class="page-link " href="?page=' . ($products['currentPage'] + 1) . '">&raquo;</a> </li>';
           }
           ?>
         </ul>

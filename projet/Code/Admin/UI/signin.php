@@ -1,5 +1,23 @@
 <?php 
- include '../Includes/head.php'
+ error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include '../Includes/root.php';
+include "../manager/gestionadmin.php";
+$message="";
+$gestionadmin = new  Gestionadmin();
+if(isset($_POST["signin"])){
+   if($gestionadmin->signin($_POST["email"],$_POST["password"])) 
+   {
+     header("Location: home.php");
+   }
+   else {
+    $message="verifier votre adresse email et mot de passe";
+   }
+
+
+}
+include '../Includes/head.php';
+
  ?>
 
 <body class="hold-transition login-page">
@@ -11,7 +29,9 @@
           </div>
           <div class="card-body">
             <p class="login-box-msg">Sign in</p>
-            <form  method="post" id="quickForm">
+            <form  method="post" id="quickForm" action="signin.php">
+              <p class="text-danger"><?php echo $message ?></p>
+              
                 <div class="form-group">
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
@@ -34,7 +54,7 @@
                 </div>
               <div class="row">
                 <div class="col-4">
-                  <button type="submit" class="btn  btn-block">Sign In</button>
+                  <button type="submit" name="signin" class="btn  btn-block">Sign In</button>
                 </div>
               </div>
             </form>

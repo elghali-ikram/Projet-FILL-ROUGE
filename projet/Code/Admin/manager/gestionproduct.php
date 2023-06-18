@@ -30,8 +30,8 @@ class Gestionproduct {
         $where = '';
         $params = array();
         if (!empty($column) && !empty($value)) {
-            $where = "WHERE $column = :value";
-            $params[':value'] = $value;
+            $where = "WHERE $column LIKE :value";
+            $params[':value'] = "$value%";
         }
     
         // Get the total count

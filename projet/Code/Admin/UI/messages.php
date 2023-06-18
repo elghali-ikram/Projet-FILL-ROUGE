@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (empty($_SESSION["email"])) {
+    // User session is not empty, redirect to home.php
+    header("Location: page404.php");
+    exit();
+}
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include '../Includes/head.php';
@@ -94,6 +100,7 @@ if (isset($_POST['submit'])) {
         </div>
       </section>
     </div>
+    
     <?php
     include '../Includes/footer.php'
     ?>
